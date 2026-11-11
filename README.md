@@ -135,3 +135,5 @@ The CLI selects a paired device whose name contains Bose, QC, or Ultra by defaul
 | `src/BoseCtl` | Command-line utility |
 | `src/Bose.Bmap` | BMAP protocol, RFCOMM transport, and device API |
 | `publish.ps1` | Script to publish the self-contained graphical app |
+
+Community Discussion: linux.do
