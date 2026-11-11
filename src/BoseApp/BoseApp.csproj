@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <RootNamespace>BoseApp</RootNamespace>
+    <AssemblyName>BoseApp</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+
+    <!-- WinUI 3，非打包（unpackaged）方式运行，Windows App SDK 运行时随应用一起输出，无需单独安装 -->
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <EnableMsixTooling>true</EnableMsixTooling>
+
+    <Platforms>x64;ARM64</Platforms>
+    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+    <Platform Condition="'$(Platform)' == '' Or '$(Platform)' == 'AnyCPU' Or '$(Platform)' == 'Any CPU'">x64</Platform>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-$(Platform.ToLower())</RuntimeIdentifier>
+
+    <!-- 程序图标与版本信息 -->
+    <ApplicationIcon>Assets\BoseApp.ico</ApplicationIcon>
+    <Product>Bose Earbuds</Product>
+    <AssemblyTitle>Bose Earbuds</AssemblyTitle>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- 发布设置：自包含（目标电脑无需安装 .NET 与 Windows App SDK） -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <SelfContained>true</SelfContained>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <!-- WinUI 3 大量依赖反射与 COM 互操作，裁剪容易导致运行时崩溃，不启用 -->
+    <PublishTrimmed>false</PublishTrimmed>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <!-- 单文件模式：dotnet publish ... -p:SingleFile=true -->
+  <PropertyGroup Condition="'$(SingleFile)' == 'true'">
+    <PublishSingleFile>true</PublishSingleFile>
+    <!-- WinUI 需要 resources.pri / .xbf 等文件位于程序目录，全部打进单文件并在首次运行时解压 -->
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\BoseApp.ico" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.250205002" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bose.Bmap\Bose.Bmap.csproj" />
+  </ItemGroup>
+
+</Project>

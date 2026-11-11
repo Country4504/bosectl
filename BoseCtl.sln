@@ -1,0 +1,34 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bose.Bmap", "src\Bose.Bmap\Bose.Bmap.csproj", "{6A1D2C3E-4B5F-4A60-9C11-0B1E2D3F4A51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoseCtl", "src\BoseCtl\BoseCtl.csproj", "{7B2E3D4F-5C60-4B71-8D22-1C2F3E4A5B62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoseApp", "src\BoseApp\BoseApp.csproj", "{8C3F4E5A-6D71-4C82-9E33-2D3A4F5B6C73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A1D2C3E-4B5F-4A60-9C11-0B1E2D3F4A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1D2C3E-4B5F-4A60-9C11-0B1E2D3F4A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1D2C3E-4B5F-4A60-9C11-0B1E2D3F4A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1D2C3E-4B5F-4A60-9C11-0B1E2D3F4A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2E3D4F-5C60-4B71-8D22-1C2F3E4A5B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2E3D4F-5C60-4B71-8D22-1C2F3E4A5B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2E3D4F-5C60-4B71-8D22-1C2F3E4A5B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2E3D4F-5C60-4B71-8D22-1C2F3E4A5B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C3F4E5A-6D71-4C82-9E33-2D3A4F5B6C73}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{8C3F4E5A-6D71-4C82-9E33-2D3A4F5B6C73}.Debug|Any CPU.Build.0 = Debug|x64
+		{8C3F4E5A-6D71-4C82-9E33-2D3A4F5B6C73}.Release|Any CPU.ActiveCfg = Release|x64
+		{8C3F4E5A-6D71-4C82-9E33-2D3A4F5B6C73}.Release|Any CPU.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

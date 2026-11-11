@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="BoseApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Bose Earbuds">
+
+    <Grid x:Name="Root">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- 自定义标题栏 -->
+        <Grid x:Name="TitleBar" Height="40" Padding="16,0,140,0">
+            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                <FontIcon Glyph="&#xE7F6;" FontSize="14" />
+                <TextBlock Text="Bose Earbuds" Style="{StaticResource CaptionTextBlockStyle}" />
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Padding="20,4,20,20" Spacing="16" MaxWidth="560">
+
+                <!-- 设备头部 -->
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="2">
+                        <TextBlock x:Name="DeviceNameText" Text="QC Ultra Earbuds" Style="{StaticResource TitleTextBlockStyle}" />
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <Ellipse x:Name="StatusDot" Width="8" Height="8" Fill="{ThemeResource SystemFillColorCriticalBrush}" VerticalAlignment="Center" />
+                            <TextBlock x:Name="StatusText" Text="未连接" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            <ProgressRing x:Name="BusyRing" IsActive="False" Width="14" Height="14" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <Button x:Name="RefreshButton" Click="OnRefreshClick" ToolTipService.ToolTip="刷新">
+                            <FontIcon Glyph="&#xE72C;" FontSize="14" />
+                        </Button>
+                        <Button x:Name="ConnectButton" Click="OnConnectClick" Content="连接" Style="{StaticResource AccentButtonStyle}" />
+                    </StackPanel>
+                </Grid>
+
+                <InfoBar x:Name="ErrorBar" Severity="Error" IsOpen="False" IsClosable="True" />
+
+                <!-- 电量 -->
+                <TextBlock Text="电量" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Style="{StaticResource CardStyle}">
+                        <StackPanel Spacing="8">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="L" FontWeight="SemiBold" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                <TextBlock Text="左耳" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <FontIcon x:Name="LeftIcon" Glyph="&#xE996;" FontSize="22" />
+                                <TextBlock x:Name="LeftText" Text="--" Style="{StaticResource SubtitleTextBlockStyle}" />
+                            </StackPanel>
+                            <ProgressBar x:Name="LeftBar" Maximum="100" Value="0" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                        <StackPanel Spacing="8">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <TextBlock Text="R" FontWeight="SemiBold" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                                <TextBlock Text="右耳" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <FontIcon x:Name="RightIcon" Glyph="&#xE996;" FontSize="22" />
+                                <TextBlock x:Name="RightText" Text="--" Style="{StaticResource SubtitleTextBlockStyle}" />
+                            </StackPanel>
+                            <ProgressBar x:Name="RightBar" Maximum="100" Value="0" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <TextBlock x:Name="CaseText" Text="充电盒: --" Style="{StaticResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                           ToolTipService.ToolTip="耳机上报的充电盒电量，Bose App 不显示该值，仅供参考" />
+
+                <!-- 模式 -->
+                <TextBlock Text="降噪模式" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="0,8,0,0" />
+                <Grid x:Name="PresetGrid" ColumnSpacing="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+                <TextBlock x:Name="CustomHeader" Text="自定义模式" Style="{StaticResource BodyStrongTextBlockStyle}" Margin="0,8,0,0" Visibility="Collapsed" />
+                <StackPanel x:Name="CustomPanel" Spacing="6" />
+
+                <CheckBox x:Name="PromptCheck" Content="切换时语音播报模式名称" />
+
+                <!-- 设备信息 -->
+                <Expander Header="设备信息" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0,8,0,0">
+                    <Grid ColumnSpacing="16" RowSpacing="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition /><RowDefinition /><RowDefinition /><RowDefinition />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="蓝牙地址" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <TextBlock x:Name="AddressText" Grid.Column="1" Text="--" IsTextSelectionEnabled="True" />
+                        <TextBlock Grid.Row="1" Text="固件版本" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <TextBlock x:Name="FirmwareText" Grid.Row="1" Grid.Column="1" Text="--" IsTextSelectionEnabled="True" />
+                        <TextBlock Grid.Row="2" Text="序列号" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <TextBlock x:Name="SerialText" Grid.Row="2" Grid.Column="1" Text="--" IsTextSelectionEnabled="True" />
+                        <TextBlock Grid.Row="3" Text="BMAP 版本" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                        <TextBlock x:Name="BmapText" Grid.Row="3" Grid.Column="1" Text="--" IsTextSelectionEnabled="True" />
+                    </Grid>
+                </Expander>
+
+                <TextBlock x:Name="UpdatedText" Style="{StaticResource CaptionTextBlockStyle}"
+                           Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

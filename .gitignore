@@ -1,0 +1,33 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Aa]rtifacts/
+[Tt]est[Rr]esults/
+
+# Published apps and archives
+/dist/
+*.zip
+
+# Visual Studio and IDE state
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# OS metadata
+Thumbs.db
+Desktop.ini
+.DS_Store
