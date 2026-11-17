@@ -1,4 +1,4 @@
-# Bose QC Ultra Earbuds for Windows 
+# Bose QC Ultra Earbuds for Windows  
 
 A Windows companion for Bose QC Ultra Earbuds. Check battery levels, view device information, and switch listening modes over Bluetooth.
 
