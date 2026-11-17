@@ -6,7 +6,7 @@ A Windows companion for Bose QC Ultra Earbuds. Check battery levels, view device
 
 **BoseApp is the easiest way to use this project.** Its graphical interface is designed for everyday use: connect to your earbuds, check left and right battery levels, and switch between Quiet, Aware, Immersion, or your saved custom modes with a click.
 
-### Download and run
+### Download and run 
 
 To create a ready-to-run app folder on a Windows PC with the .NET 8 SDK, clone or download this repository, open PowerShell in the project folder, and run:
 
